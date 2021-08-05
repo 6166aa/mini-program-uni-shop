@@ -3,37 +3,37 @@
     {
       "path": "pages/home/home",
       "style": {
-        "navigationBarTitleText": "黑马优购",
+        "navigationBarTitleText": "黑马优选",
+        "navigationStyle": "custom",
         "enablePullDownRefresh": false
       }
-
-    }, {
+    },
+    {
       "path": "pages/cate/cate",
       "style": {
-        "navigationBarTitleText": "",
+        "navigationBarTitleText": "分类",
         "enablePullDownRefresh": false
       }
-
-    }, {
+    },
+    {
+      "path": "pages/cent/cent",
+      "style": {
+        "navigationBarTitleText": "分类",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
       "path": "pages/cart/cart",
       "style": {
         "navigationBarTitleText": "",
         "enablePullDownRefresh": false
       }
-
-    }, {
-      "path": "pages/cent/cent",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-
     }
   ],
   "globalStyle": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "黑马优选",
+    "navigationBarBackgroundColor": "#d81e06",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
@@ -52,9 +52,9 @@
         "text": "分类"
       },
       {
-        "pagePath": "pages/cate/cate",
-        "selectedIconPath": "static/images/tabbar/cate-active.png",
-        "iconPath": "./static/images/tabbar/cate.png",
+        "pagePath": "pages/cart/cart",
+        "selectedIconPath": "static/images/tabbar/cart-active.png",
+        "iconPath": "./static/images/tabbar/cart.png",
         "text": "购物车"
       },
       {
@@ -64,5 +64,25 @@
         "text": "我的"
       }
     ]
-  }
+  },
+  "subPackages": [{
+    "root": "subpkg",
+    "name": "subpkg",
+    "pages": [{
+        "path": "pages/goodsList/goodsList",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+      },
+      {
+        "path": "pages/goodsDetail/goodsDetail",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+      }
+
+    ]
+  }]
 }
