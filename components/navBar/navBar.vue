@@ -3,10 +3,8 @@
     <view class="navbar" :style="[{ height: customBar + 'px' }]">
       <view class="navbar--fixed" :style="style">
         <view class="navbar__left" v-if="leftText || leftIcon !== 'none'" @tap="backPage">
-          <view @tap="BackPage" class="navbar__slot-default">
-            <u-icon class="navbar__left-icon" v-if="leftIcon !== 'none'" :name="leftIcon"></u-icon>
-            <text class="navbar__left-text">{{ leftText }}</text>
-          </view>
+          <u-icon class="navbar__left-icon" v-if="leftIcon !== 'none'" :name="leftIcon"></u-icon>
+          <text class="navbar__left-text">{{ leftText }}</text>
         </view>
         <view class="navbar__title" :style="[{ top: statusBar + 'px' }]">
           <slot name="default">{{ title }}</slot>
@@ -18,6 +16,7 @@
 </template>
 
 <script>
+import navBarConfig from '@/configs/navbar.js';
 export default {
   data() {
     return {
@@ -37,11 +36,11 @@ export default {
   props: {
     background: {
       type: String,
-      default: '#fff'
+      default: navBarConfig ? navBarConfig.backgroundColor : '#fff'
     },
     color: {
       type: String,
-      default: '#000'
+      default: navBarConfig ? navBarConfig.color : '#000'
     },
     leftText: {
       type: String,
@@ -57,13 +56,13 @@ export default {
     },
     title: {
       type: String,
-      default: '标题'
+      default: ''
     }
   },
   methods: {
     backPage() {
       this.$emit('leftAction');
-      if(this.disableLeftAction){
+      if (this.disableLeftAction) {
         return;
       }
       uni.navigateBack({

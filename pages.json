@@ -33,6 +33,7 @@
   "globalStyle": {
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "黑马优选",
+    "navigationStyle": "custom",
     "navigationBarBackgroundColor": "#d81e06"
   },
   "tabBar": {
@@ -82,9 +83,17 @@
         }
       }
 
+      , {
+        "path": "pages/search/search",
+        "style": {
+          "navigationBarTitleText": "",
+          "enablePullDownRefresh": false
+        }
+
+      }
     ]
   }],
   "easycom": {
-  	"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+    "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
   }
 }

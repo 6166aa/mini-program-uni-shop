@@ -2,11 +2,8 @@
   <view>
     <mescroll-body ref="mescrollRef" @init="mescrollInit" @down="downCallback" :down="downOption" :up="upOption">
       <!-- 自定义导航条 -->
-      <nav-bar left-text="黑马精选" left-icon="none" background="#d81e06" color="#fff">
-        <view class="search">
-          <uni-icons type="search"></uni-icons>
-          <view class="placeholder">输入搜索内容</view>
-        </view>
+      <nav-bar left-text="黑马精选" left-icon="none">
+        <view class="search"><u-search :show-action="false" disabled @click="jumpSearch" height="50"></u-search></view>
       </nav-bar>
       <!-- swiper -->
       <swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :circular="true" :duration="1000">
@@ -45,9 +42,10 @@
 
 <script>
 import MescrollMixin from '@/uni_modules/mescroll-uni/components/mescroll-uni/mescroll-mixins.js';
+import commonMethods from '@/mixins/commonMethods.js';
 import { getSwiperData, getActionData, getFloorData } from '@/apis/home.js';
 export default {
-  mixins: [MescrollMixin],
+  mixins: [MescrollMixin,commonMethods],
   async onLoad() {
     await this.getSwiperData();
     await this.getActionData();
@@ -115,18 +113,7 @@ export default {
 }
 
 .search {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  background-color: #fefefe;
-  height: 1.8em;
-  padding: 0 0.7em;
-  border-radius: 35rpx;
-  color: #000;
-  margin-left: -80rpx;
-  .placeholder {
-    margin-left: 0.2em;
-  }
+  margin-left: -40rpx;
 }
 .swiper {
   width: 100%;

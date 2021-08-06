@@ -1,9 +1,8 @@
 <template>
   <view class="cate" :style="{ height: windowHeight + 'px' }">
-    <nav-bar statusBar background="#d81e06" color="#fff" left-text="分类" left-icon="none">
+    <nav-bar statusBar left-text="分类" left-icon="none">
       <view class="search">
-        <uni-icons type="search"></uni-icons>
-        <view class="placeholder">输入搜索内容</view>
+        <view class="search"><u-search :show-action="false" disabled @click="jumpSearch" height="50"></u-search></view>
       </view>
     </nav-bar>
     <view class="cate-section">
@@ -29,7 +28,9 @@
 
 <script>
 import { getCategories } from '@/apis/cate.js';
+import commonMethods from '@/mixins/commonMethods.js';
 export default {
+  mixins:[commonMethods],
   async onLoad() {
     const { windowHeight } = uni.getSystemInfoSync();
     this.windowHeight = windowHeight;
@@ -69,25 +70,8 @@ export default {
 .cate {
   display: flex;
   flex-direction: column;
-  .title-slot {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-  }
   .search {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    background-color: #fefefe;
-    height: 1.8em;
-    padding: 0 0.7em;
-    border-radius: 35rpx;
-    color: #000;
-    margin-left: -80rpx;
-    .placeholder {
-      margin-left: 0.2em;
-    }
+    margin-left: -40rpx;
   }
   .cate-section {
     flex: 1;

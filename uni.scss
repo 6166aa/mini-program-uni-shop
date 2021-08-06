@@ -75,4 +75,10 @@
 // $uni-color-paragraph: #3F536E; // 文章段落颜色
 // $uni-font-size-paragraph:30rpx;
 
+$navbar-background-color:#d81e06;
+
 @import "uview-ui/theme.scss";
+
+:export{
+  navbarBackgroundColor:$navbar-background-color
+}
