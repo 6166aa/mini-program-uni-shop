@@ -1,17 +1,41 @@
 <script>
-	export default {
-		onLaunch: function() {
-			console.log('App Launch')
-		},
-		onShow: function() {
-			console.log('App Show')
-		},
-		onHide: function() {
-			console.log('App Hide')
-		}
-	}
+import Vue from 'vue';
+export default {
+  onLaunch: function() {
+    uni.getSystemInfo({
+      success: function(e) {
+        // #ifndef MP
+        Vue.prototype.$statusBar = e.statusBarHeight;
+        if (e.platform == 'android') {
+          Vue.prototype.$customBar = e.statusBarHeight + 50;
+        } else {
+          Vue.prototype.$customBar = e.statusBarHeight + 45;
+        }
+        // #endif
+
+        // #ifdef MP-WEIXIN
+        Vue.prototype.$statusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        Vue.prototype.$menuButton = custom;
+        Vue.prototype.$customBar = custom.bottom + custom.top - e.statusBarHeight;
+        // #endif
+
+        // #ifdef MP-ALIPAY
+        Vue.prototype.$statusBar = e.statusBarHeight;
+        Vue.prototype.$customBar = e.statusBarHeight + e.titleBarHeight;
+        // #endif
+      }
+    });
+  },
+  onShow: function() {
+    console.log('App Show');
+  },
+  onHide: function() {
+    console.log('App Hide');
+  }
+};
 </script>
 
-<style>
-	/*每个页面公共css */
+<style lang="scss">
+@import 'uview-ui/index.scss';
 </style>

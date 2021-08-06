@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "dependencies": {
-    "luch-request": "^3.0.6"
+    "luch-request": "^3.0.6",
+    "uview-ui": "^1.8.4"
   },
   "devDependencies": {},
   "scripts": {
