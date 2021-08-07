@@ -5,11 +5,16 @@ const optionDefault = {
     loading: true
   }
 };
-export async function getCategories(options) {
+
+
+export async function getGoodsDetail(id, options) {
   options = {
     ...optionDefault,
     ...options
   };
   options.custom.loading = options.loading;
-  return http.get('categories', options);
+  options.params = {
+    goods_id: id
+  };
+  return http.get('goods/detail', options);
 }

@@ -5,7 +5,8 @@ const optionDefault = {
     loading: true
   }
 };
-export async function getSuggestion(val,options = optionDefault) {
+export async function getSuggestion(val,options) {
+  options = {...optionDefault,...options};
   options.custom.loading = options.loading;
   options.params = {query:val};
   return http.get('goods/qsearch', options);

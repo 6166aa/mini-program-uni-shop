@@ -1,99 +1,112 @@
 {
-  "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    {
-      "path": "pages/home/home",
-      "style": {
-        "navigationBarTitleText": "黑马优选",
-        "navigationStyle": "custom"
-      }
+    "pages" : [
+        //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+        {
+            "path" : "pages/home/home",
+            "style" : {
+                "navigationBarTitleText" : "黑马优选",
+                "navigationStyle" : "custom"
+            }
+        },
+        {
+            "path" : "pages/cate/cate",
+            "style" : {
+                "navigationBarTitleText" : "分类",
+                "navigationStyle" : "custom",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            "path" : "pages/cent/cent",
+            "style" : {
+                "navigationBarTitleText" : "分类",
+                "enablePullDownRefresh" : false
+            }
+        },
+        {
+            "path" : "pages/cart/cart",
+            "style" : {
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false
+            }
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "white",
+        "navigationBarTitleText" : "黑马优选",
+        "navigationStyle" : "custom",
+        "navigationBarBackgroundColor" : "#d81e06"
     },
-    {
-      "path": "pages/cate/cate",
-      "style": {
-        "navigationBarTitleText": "分类",
-        "navigationStyle": "custom",
-        "enablePullDownRefresh": false
-      }
+    "tabBar" : {
+        "color" : "#39393a",
+        "selectedColor" : "#d81e06",
+        "list" : [
+            {
+                "pagePath" : "pages/home/home",
+                "selectedIconPath" : "static/images/tabbar/home-active.png",
+                "iconPath" : "./static/images/tabbar/home.png",
+                "text" : "首页"
+            },
+            {
+                "pagePath" : "pages/cate/cate",
+                "selectedIconPath" : "static/images/tabbar/cate-active.png",
+                "iconPath" : "./static/images/tabbar/cate.png",
+                "text" : "分类"
+            },
+            {
+                "pagePath" : "pages/cart/cart",
+                "selectedIconPath" : "static/images/tabbar/cart-active.png",
+                "iconPath" : "./static/images/tabbar/cart.png",
+                "text" : "购物车"
+            },
+            {
+                "pagePath" : "pages/cent/cent",
+                "selectedIconPath" : "static/images/tabbar/cent-active.png",
+                "iconPath" : "./static/images/tabbar/cent.png",
+                "text" : "我的"
+            }
+        ]
     },
-    {
-      "path": "pages/cent/cent",
-      "style": {
-        "navigationBarTitleText": "分类",
-        "enablePullDownRefresh": false
-      }
+    "subPackages" : [
+        {
+            "root" : "subpkg",
+            "name" : "subpkg",
+            "pages" : [
+                {
+                    "path" : "pages/goodsList/goodsList",
+                    "style" : {
+                        "navigationBarTitleText" : ""
+                    }
+                },
+                {
+                    "path" : "pages/goodsDetail/goodsDetail",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                },
+                {
+                    "path" : "pages/search/search",
+                    "style" : {
+                        "navigationBarTitleText" : "",
+                        "enablePullDownRefresh" : false
+                    }
+                }
+            ]
+        }
+    ],
+    "easycom" : {
+        "^u-(.*)" : "@/uview-ui/components/u-$1/u-$1.vue"
     },
-    {
-      "path": "pages/cart/cart",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
+    "condition" : {
+        //模式配置，仅开发期间生效
+        "current" : 0, //当前激活的模式(list 的索引项)
+        "list" : [
+            {
+                "name" : "goodsDetail", //模式名称
+                "path" : "pages/goodsDetail/goodsDetail",
+                "query" : "goodsId=57332" //启动参数，在页面的onLoad函数里面得到
+            }
+        ]
     }
-  ],
-  "globalStyle": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "黑马优选",
-    "navigationStyle": "custom",
-    "navigationBarBackgroundColor": "#d81e06"
-  },
-  "tabBar": {
-    "color": "#39393a",
-    "selectedColor": "#d81e06",
-    "list": [{
-        "pagePath": "pages/home/home",
-        "selectedIconPath": "static/images/tabbar/home-active.png",
-        "iconPath": "./static/images/tabbar/home.png",
-        "text": "首页"
-      },
-      {
-        "pagePath": "pages/cate/cate",
-        "selectedIconPath": "static/images/tabbar/cate-active.png",
-        "iconPath": "./static/images/tabbar/cate.png",
-        "text": "分类"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "selectedIconPath": "static/images/tabbar/cart-active.png",
-        "iconPath": "./static/images/tabbar/cart.png",
-        "text": "购物车"
-      },
-      {
-        "pagePath": "pages/cent/cent",
-        "selectedIconPath": "static/images/tabbar/cent-active.png",
-        "iconPath": "./static/images/tabbar/cent.png",
-        "text": "我的"
-      }
-    ]
-  },
-  "subPackages": [{
-    "root": "subpkg",
-    "name": "subpkg",
-    "pages": [{
-        "path": "pages/goodsList/goodsList",
-        "style": {
-          "navigationBarTitleText": "",
-          "enablePullDownRefresh": false
-        }
-      },
-      {
-        "path": "pages/goodsDetail/goodsDetail",
-        "style": {
-          "navigationBarTitleText": "",
-          "enablePullDownRefresh": false
-        }
-      }
-
-      , {
-        "path": "pages/search/search",
-        "style": {
-          "navigationBarTitleText": "",
-          "enablePullDownRefresh": false
-        }
-
-      }
-    ]
-  }],
-  "easycom": {
-    "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
-  }
 }
