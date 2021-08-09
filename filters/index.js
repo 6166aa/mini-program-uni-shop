@@ -11,9 +11,7 @@ files.keys().forEach((item)=>{
 	{
 		return;
 	}
-  console.log(item);
   var key =/(\w+)\.js$/.exec(item)[1];
   filters[key] = files(item).default;
 });
-console.log(filters);
 export default filters;

@@ -8,7 +8,7 @@
       <!-- swiper -->
       <swiper class="swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :circular="true" :duration="1000">
         <swiper-item class="swiper-item" v-for="item in swiperData" :key="item.goods_id">
-          <navigator :url="`/subpkg/pages/goodsDetail/goodsDetail?id=${item.goods_id}`" open-type="navigate"><image :src="item.image_src" mode="scaleToFill"></image></navigator>
+          <navigator :url="`/subpkg/pages/goodsDetail/goodsDetail?goodsId=${item.goods_id}`" open-type="navigate"><image :src="item.image_src" mode="scaleToFill"></image></navigator>
         </swiper-item>
       </swiper>
       <!-- 功能区 -->

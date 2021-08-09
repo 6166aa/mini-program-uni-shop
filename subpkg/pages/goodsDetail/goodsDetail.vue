@@ -25,13 +25,13 @@
       </view>
       <navigator url="/pages/cart/cart" open-type="switchTab">
         <view class="tab">
-          <u-badge type="error" count="7" size="mini" show-zero :offset="[-10, 5]"></u-badge>
+          <u-badge type="error" :count="total" size="mini" :offset="[-10, 5]"></u-badge>
           <u-icon name="shopping-cart" class="icon"></u-icon>
           <view>购物车</view>
         </view>
       </navigator>
       <view class="btn-group">
-        <view class="btn add-cart">加入购物车</view>
+        <view class="btn add-cart" @click="addCart">加入购物车</view>
         <view class="btn buy">购买</view>
       </view>
     </view>
@@ -40,11 +40,12 @@
 
 <script>
 import { getGoodsDetail } from '@/apis/goodsDetail.js';
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   async onLoad(options) {
     if (options) {
       await this.getGoodsDetail(options.goodsId);
-      this.info.goods_introduce= this.info.goods_introduce.replace(/(<img)/g,'$1 style="display:block"');
+      this.info.goods_introduce = this.info.goods_introduce.replace(/(<img)/g, '$1 style="display:block"');
     }
   },
   data() {
@@ -55,19 +56,30 @@ export default {
       info: {}
     };
   },
-  computed:{
-    scrollStyle(){
-      return `height:calc( ${this.screenHeight-this.customBar+'px'} - 100rpx );`
+  computed: {
+    ...mapGetters('cart',['total']),
+    scrollStyle() {
+      return `height:calc( ${this.screenHeight - this.customBar + 'px'} - 100rpx );`;
     }
   },
   methods: {
+    ...mapMutations('cart',['addCartList']),
     async getGoodsDetail(id) {
       this.info = await getGoodsDetail(id);
     },
-    showBigImage(index){
+    showBigImage(index) {
       uni.previewImage({
-        urls:this.info.pics.map(_=>_.pics_big_url),
-        current:index
+        urls: this.info.pics.map(_ => _.pics_big_url),
+        current: index
+      });
+    },
+    addCart(){
+      this.addCartList({
+        goods_id:this.info.goods_id,
+        goods_name:this.info.goods_name,
+        num:1,
+        goods_price:this.info.goods_price,
+        goods_small_logo:this.info.goods_small_logo
       });
     }
   }
@@ -93,25 +105,25 @@ export default {
     .content {
       display: flex;
       flex-direction: column;
-      .base-info{
-        padding:25rpx;
+      .base-info {
+        padding: 25rpx;
       }
-      .price{
+      .price {
         color: #c00000;
         font-size: 1.8em;
       }
-      .delivery{
+      .delivery {
         color: #878787;
         padding: 20rpx 0;
       }
-      .title-row{
+      .title-row {
         display: flex;
-        .title{
+        .title {
           flex: 1;
           padding: 20rpx 0;
           font-weight: bold;
         }
-        .collect{
+        .collect {
           border-left: 1px solid #eee;
           width: 125rpx;
           margin-left: 17rpx;
