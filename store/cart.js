@@ -2,7 +2,11 @@ export default {
   namespaced: true,
   state: {
     //实际项目中，购物车的数据应该是存储在数据库中的
-    cartList: uni.getStorageSync('cartList') || []
+    cartList: (uni.getStorageSync('cartList') ||[]).map(item => {
+      item.show = false;
+      item.status = false;
+      return item;
+    })
   },
   getters: {
     total: (state) => {
@@ -52,9 +56,9 @@ export default {
     //   }
     // },
     updateCartNum(state, payload) {
-     var item = state.cartList.find(item => item.goods_id === payload.goods_id);
-     if (item) {
-        item.num=payload.num;
+      var item = state.cartList.find(item => item.goods_id === payload.goods_id);
+      if (item) {
+        item.num = payload.num;
         uni.setStorageSync('cartList', state.cartList);
       }
     },

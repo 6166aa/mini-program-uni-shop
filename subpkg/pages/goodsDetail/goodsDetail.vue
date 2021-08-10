@@ -79,7 +79,9 @@ export default {
         goods_name:this.info.goods_name,
         num:1,
         goods_price:this.info.goods_price,
-        goods_small_logo:this.info.goods_small_logo
+        goods_small_logo:this.info.goods_small_logo,
+        status:false,
+        show:false
       });
     }
   }

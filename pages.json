@@ -19,8 +19,9 @@
         {
             "path" : "pages/cent/cent",
             "style" : {
-                "navigationBarTitleText" : "分类",
-                "enablePullDownRefresh" : false
+                "navigationBarTitleText" : "",
+                "enablePullDownRefresh" : false,
+                "navigationStyle":"custom"
             }
         },
         {

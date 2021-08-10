@@ -86,24 +86,27 @@ export default {
   },
   watch: {
     inputValue(nv, v) {
-      if(nv.toString().trim().length===0){
+      if (nv.toString().trim().length === 0) {
         return;
       }
       if (nv !== v && !/[^\d]/g.test(nv)) {
-        if(nv<this.min){
+        if (nv < this.min) {
           nv = this.min;
-          this.$emit('error',{type:'lessMin',message:`小于最小值${this.min}`})
+          this.$emit('error', { type: 'lessMin', message: `小于最小值${this.min}` });
         }
-        if(nv>this.max){
+        if (nv > this.max) {
           nv = this.max;
-          this.$emit('error',{type:'moreMax',message:`大于最大值${this.max}`})
+          this.$emit('error', { type: 'moreMax', message: `大于最大值${this.max}` });
         }
         this.$emit('change', { value: +nv, index: this.index });
       }
     },
-    value(n) {
-      if(n!==this.inputValue){
-        this.inputValue = n;
+    value:{
+      immediate:true,
+      handler(n){
+        if(n !==this.inputValue){
+          this.inputValue = n;
+        }
       }
     }
   }
